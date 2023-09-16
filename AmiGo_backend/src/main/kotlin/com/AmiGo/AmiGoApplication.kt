@@ -1,4 +1,4 @@
-package com.main.AmiGo
+package com.AmiGo
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

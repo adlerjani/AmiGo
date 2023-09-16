@@ -1,4 +1,4 @@
-package com.main.AmiGo
+package com.AmiGo
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
