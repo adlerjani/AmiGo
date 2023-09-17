@@ -1,5 +1,6 @@
 package com.AmiGo.model
 
+import com.AmiGo.controller.dto.UserResponseDto
 import jakarta.persistence.*
 import java.util.Date
 
@@ -17,3 +18,7 @@ class User (
     @Column val birth:String="",
     @Column val bio:String ="",
     )
+
+fun User.toResponseDto(): UserResponseDto{
+    return UserResponseDto(full_name,email,profileURL,birth,bio)
+}
