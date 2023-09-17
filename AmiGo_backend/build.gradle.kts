@@ -26,7 +26,10 @@ dependencies {
 	implementation("org.springframework.boot:spring-boot-starter-validation")
 	implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
+	implementation("io.fusionauth:fusionauth-jwt:5.2.4")
+//	implementation("io.jsonwebtoken:jjwt-api:0.11.5")
 	runtimeOnly("com.mysql:mysql-connector-j")
+//	runtimeOnly("io.jsonwebtoken:jjwt-impl:0.11.5")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testImplementation("org.springframework.security:spring-security-test")
 }
