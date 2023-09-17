@@ -1,9 +1,8 @@
-package com.AmiGo.controller.dto
+package hu.AmiGo.controller.dto
 
 import com.AmiGo.model.User
 import jakarta.validation.constraints.Email
 import jakarta.validation.constraints.NotBlank
-import jakarta.validation.constraints.Positive
 
 
 data class CreateUserRequestDto (
