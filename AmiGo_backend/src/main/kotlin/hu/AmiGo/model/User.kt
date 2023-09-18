@@ -21,7 +21,7 @@ class User (
     @Column val birth:String="",
     @Column val bio:String ="",
     @Column @JsonIgnore var password:String ="",
-    @OneToMany(mappedBy = "user_id", cascade = [CascadeType.ALL], orphanRemoval = true) val posts:MutableList<Post> = mutableListOf()
+    @OneToMany(mappedBy = "userId", cascade = [CascadeType.ALL], orphanRemoval = true) val posts:MutableList<Post> = mutableListOf()
 
     )
 
