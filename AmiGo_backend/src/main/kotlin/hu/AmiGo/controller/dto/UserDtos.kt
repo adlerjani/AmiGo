@@ -19,6 +19,7 @@ data class AuthUserRequestDto (
 )
 
 data class UserResponseDto (
+    val id:Int,
     val full_name: String,
     val username: String,
     val email: String,
