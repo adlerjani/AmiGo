@@ -1,5 +1,6 @@
 package hu.AmiGo.model
 
+import com.fasterxml.jackson.annotation.JsonIgnore
 import hu.AmiGo.controller.dto.UserResponseDto
 import jakarta.persistence.*
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
@@ -19,7 +20,7 @@ class User (
     @Column val email:String ="",
     @Column val birth:String="",
     @Column val bio:String ="",
-    @Column var password:String ="",
+    @Column @JsonIgnore var password:String ="",
 
     )
 

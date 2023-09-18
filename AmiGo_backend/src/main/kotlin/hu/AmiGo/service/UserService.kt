@@ -4,6 +4,7 @@ import hu.AmiGo.controller.dto.AuthUserRequestDto
 import hu.AmiGo.controller.dto.CreateUserRequestDto
 import hu.AmiGo.controller.dto.UserResponseDto
 import hu.AmiGo.controller.dto.toUser
+import hu.AmiGo.model.User
 import hu.AmiGo.model.toResponseDto
 import hu.AmiGo.repository.UserRepository
 import io.fusionauth.jwt.Signer
@@ -43,19 +44,11 @@ class UserService(
 
         val encodedJWT = JWT.getEncoder().encode(jwt, signer)
 
-        //------
-
-//        val issuer = user.username
-////        val key:SecretKey = Keys.secretKeyFor(SignatureAlgorithm.HS512)
-////        val base64Key= Encoders.BASE64.encode(key.getEncoded());
-//        val jwt = Jwts.builder()
-//            .setIssuer(issuer)
-//            .setExpiration(Date(System.currentTimeMillis() + 24 * 60 * 60 * 1000)) //1 day
-//            .signWith(SignatureAlgorithm.ES512,"secret").compact()
-
-//        return findUser.toResponseDto();
-
         return encodedJWT;
+    }
+
+    fun getUserByUsernameForAuth(username:String): User {
+        return userRepository.findByUsername(username) ?: throw ResponseStatusException(HttpStatus.NOT_FOUND);
     }
 
 }
