@@ -21,9 +21,10 @@ class User (
     @Column val birth:String="",
     @Column val bio:String ="",
     @Column @JsonIgnore var password:String ="",
-    @OneToMany(mappedBy = "userId", cascade = [CascadeType.ALL], orphanRemoval = true) val posts:MutableList<Post> = mutableListOf()
+    @OneToMany(mappedBy = "userId", cascade = [CascadeType.ALL], orphanRemoval = true) val posts:MutableList<Post> = mutableListOf(),
+    @OneToMany(mappedBy = "userId", cascade = [CascadeType.ALL], orphanRemoval = true) val likes:MutableList<Like> = mutableListOf(),
 
-    )
+)
 
 fun User.toResponseDto(): UserResponseDto {
     return UserResponseDto(id,full_name,username,email,password,profileURL,birth,bio)
