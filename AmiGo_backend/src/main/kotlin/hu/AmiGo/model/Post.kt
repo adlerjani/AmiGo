@@ -7,7 +7,7 @@ import java.sql.Timestamp
 import java.time.Instant
 
 @Entity
-@Table(name = "post")
+@Table(name = "amigo_post")
 class Post (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

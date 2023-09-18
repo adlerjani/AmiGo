@@ -7,7 +7,7 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder
 private var asd = "";
 
 @Entity
-@Table(name = "user")
+@Table(name = "amigo_user")
 class User (
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
