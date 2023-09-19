@@ -19,6 +19,6 @@ data class LikeResponseDto(
     val createdDate: Timestamp,
 )
 
-fun CreateLikeRequestDto.toPost(): Like {
+fun CreateLikeRequestDto.toLike(): Like {
     return Like(userId = this.userId, postId = this.postId)
 }

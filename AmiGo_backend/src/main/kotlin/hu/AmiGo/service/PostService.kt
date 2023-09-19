@@ -30,12 +30,6 @@ class PostService(
     fun savePost(user: User, requestDto: CreatePostRequestDto): PostResponseDto{
         requestDto.userId = user
 
-//        val post = postRepository.getReferenceById(requestDto.toPost().id)
-//        val post = postRepository.save(requestDto.toPost())
-//        post.userId=user
-//        return postRepository.save(post).toResponseDto()
-//        return post.toResponseDto();
-
         val post = postRepository.save(requestDto.toPost())
         log.info("Post created: ${post.id}")
         return post.toResponseDto();
