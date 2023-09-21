@@ -10,7 +10,9 @@ import hu.AmiGo.repository.PostRepository
 import hu.AmiGo.repository.UserRepository
 import org.slf4j.Logger
 import org.slf4j.LoggerFactory
+import org.springframework.http.HttpStatus
 import org.springframework.stereotype.Service
+import org.springframework.web.server.ResponseStatusException
 
 @Service
 class LikeService(
@@ -23,14 +25,20 @@ class LikeService(
     fun likePost(postId:Int,user: User): LikeResponseDto{
         val requestDto = CreateLikeRequestDto(User(0,"","","","","","","", mutableListOf(), mutableListOf()),0)
 
-
         val post = postRepository.findById(postId).toNullable();
         if (post != null) {
             requestDto.postId=post.id
             requestDto.userId=user
         }
+        val find = likeRepository.findLikeByUserIdAndPostId(user,postId)
+        if (find != null&&find.postId==requestDto.postId && find.userId==requestDto.userId){
+            return throw ResponseStatusException(HttpStatus.NOT_ACCEPTABLE)
+        }
+
         val like = likeRepository.save(requestDto.toLike())
-        log.info("Post liked: ${like.id}")
+        log.info("Post liked: ${requestDto.postId} by user: ${requestDto.userId}")
         return like.toResponseDto();
     }
+
+
 }
