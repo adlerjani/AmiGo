@@ -2,6 +2,7 @@ package hu.AmiGo.controller
 
 import hu.AmiGo.controller.dto.CreateLikeRequestDto
 import hu.AmiGo.controller.dto.CreatePostRequestDto
+import hu.AmiGo.model.User
 import hu.AmiGo.service.LikeService
 import hu.AmiGo.service.PostService
 import hu.AmiGo.service.UserService
@@ -18,7 +19,7 @@ class LikeController(
 )
 {
     @PostMapping("/{id}")
-    fun postCreatePost(@CookieValue("jwt") jwt:String?, @PathVariable id: Int, @RequestBody like:CreateLikeRequestDto):Any{
+    fun postCreatePost(@CookieValue("jwt") jwt:String?, @PathVariable id: Int):Any{
         if (jwt == null){
             return "Authentication expired"
         }
@@ -26,6 +27,7 @@ class LikeController(
         val encode_jwt = JWT.getDecoder().decode(jwt, verifier)
         val user=userService.getUserByUsernameForAuth(encode_jwt.issuer)
 
-        return likeService.likePost(id,user,like);
+
+        return likeService.likePost(id,user);
     }
 }

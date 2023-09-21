@@ -20,7 +20,8 @@ class LikeService(
     private val log: Logger = LoggerFactory.getLogger(LikeService::class.java),
 )
 {
-    fun likePost(postId:Int,user: User, requestDto:CreateLikeRequestDto): LikeResponseDto{
+    fun likePost(postId:Int,user: User): LikeResponseDto{
+        val requestDto = CreateLikeRequestDto(User(0,"","","","","","","", mutableListOf(), mutableListOf()),0)
 
 
         val post = postRepository.findById(postId).toNullable();
