@@ -9,13 +9,13 @@ import java.sql.Timestamp
 
 data class CreateLikeRequestDto(
     @field:NotBlank @field:Positive var userId: User?,
-    @field:NotBlank @field:Positive var postId: Int,
+    @field:NotBlank @field:Positive var postId: Post?,
 )
 
 data class LikeResponseDto(
     val id:Int,
     val userId: User?,
-    val postId: Int,
+    val postId: Post?,
     val createdDate: Timestamp,
 )
 

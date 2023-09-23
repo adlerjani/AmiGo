@@ -9,12 +9,13 @@ import org.springframework.data.jpa.repository.Modifying
 import org.springframework.data.jpa.repository.Query
 import org.springframework.data.repository.query.Param
 import org.springframework.stereotype.Repository
+import java.util.Optional
 
 @Repository
 interface LikeRepository: JpaRepository<Like, Int> {
-    fun findLikeByUserIdAndPostId(userId: User, postId: Int): Like?
+    fun findLikeByUserIdAndPostId(userId: User, postId: Post): Like?
 
-    fun findLikeByPostId(postId:Int):Like?
+    fun findLikeByPostId(postId:Optional<Post>):Like?
 
 //    @Query("DELETE FROM 'amigo_like' WHERE id=:id")
 //    @Query("DELETE FROM \"amigo_like\" WHERE id=:id")

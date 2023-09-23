@@ -17,7 +17,7 @@ class Post (
     @Column val content: String = "",
     @Column val createdDate: Timestamp = Timestamp.from(Instant.now()),
     @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "user_id") @JsonBackReference var userId: User? = null,
-//    @OneToMany(mappedBy = "postId", cascade = [CascadeType.ALL], orphanRemoval = true) val like:MutableList<Like> = mutableListOf()
+    @OneToMany(mappedBy = "postId", cascade = [CascadeType.ALL], orphanRemoval = true) val like:MutableList<Like> = mutableListOf()
 
 )
 
