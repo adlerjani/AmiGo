@@ -19,7 +19,7 @@ class LikeController(
 )
 {
     @PostMapping("/{id}")
-    fun postCreatePost(@CookieValue("jwt") jwt:String?, @PathVariable id: Int):Any{
+    fun postCreateLike(@CookieValue("jwt") jwt:String?, @PathVariable id: Int):Any{
         if (jwt == null){
             return "Authentication expired"
         }
@@ -30,4 +30,18 @@ class LikeController(
 
         return likeService.likePost(id,user);
     }
+
+    @PostMapping("/{id}/unlike")
+    fun postRemoveLike(@CookieValue("jwt") jwt:String?, @PathVariable id: Int): Any? {
+        if (jwt == null){
+            return "Authentication expired"
+        }
+        val verifier: Verifier = HMACVerifier.newVerifier("too many secrets")
+        val encode_jwt = JWT.getDecoder().decode(jwt, verifier)
+        val user=userService.getUserByUsernameForAuth(encode_jwt.issuer)
+
+
+        return likeService.unlikePost(id);
+    }
+
 }

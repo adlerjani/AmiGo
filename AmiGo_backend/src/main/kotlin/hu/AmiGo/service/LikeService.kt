@@ -40,5 +40,23 @@ class LikeService(
         return like.toResponseDto();
     }
 
+    fun unlikePost(postId: Int): Any {
+        val like = likeRepository.findLikeByPostId(postId)
+
+////        val like = likeRepository.findById(postId)
+//        val likes= likeRepository.findAll();
+//        val iterator: MutableIterator<Like> = likes.iterator()
+//        while (iterator.hasNext()) {
+//            if (iterator.next() == like) {
+//                iterator.remove()
+//            }
+//        }
+//        likeRepository.saveAll(likes)
+//        log.info("Like removed: ${like.id}")
+        if (like != null) {
+            return likeRepository.removeLikeById(like.id)
+        };
+        return throw ResponseStatusException(HttpStatus.NOT_ACCEPTABLE)
+    }
 
 }
