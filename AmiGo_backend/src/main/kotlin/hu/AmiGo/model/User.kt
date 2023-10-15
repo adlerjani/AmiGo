@@ -23,6 +23,8 @@ class User (
     @Column @JsonIgnore var password:String ="",
     @OneToMany(mappedBy = "userId", cascade = [CascadeType.ALL], orphanRemoval = true) val posts:MutableList<Post> = mutableListOf(),
     @OneToMany(mappedBy = "userId", cascade = [CascadeType.ALL], orphanRemoval = true) val likes:MutableList<Like> = mutableListOf(),
+    @OneToMany(mappedBy = "userId1", cascade = [CascadeType.ALL], orphanRemoval = true) val friend1:MutableList<Friend> = mutableListOf(),
+    @OneToMany(mappedBy = "userId2", cascade = [CascadeType.ALL], orphanRemoval = true) val friend2:MutableList<Friend> = mutableListOf(),
 
 )
 
